@@ -33,6 +33,7 @@
 @property (strong, nonatomic) IBOutlet UIView *viewCell;
 @property (strong, nonatomic) IBOutlet UIButton *finishBtn;
 @property (strong, nonatomic) IBOutlet UILabel *countDay;
+@property (assign, nonatomic) NSInteger num;
 
 @end
 
@@ -40,10 +41,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-
-    //[_mytextView becomeFirstResponder];
-
+    
     _mytextView.delegate = self;
     
     self.automaticallyAdjustsScrollViewInsets = NO;
@@ -100,13 +98,17 @@
     NSInteger interval = [zone secondsFromGMTForDate:now];
     NSDate *localTime = [now dateByAddingTimeInterval:interval];
     
-   
-    NSLog(@"%@",localTime);
-    
-    
-    
+
     //得到相差秒数
     NSTimeInterval time = [localTime1 timeIntervalSinceDate:localTime];
+    
+    //推送通知
+    UILocalNotification *local = [[UILocalNotification alloc]init];
+    local.fireDate = [NSDate dateWithTimeIntervalSinceNow:20];
+    local.alertBody = self.mytextView.text;
+    [local setApplicationIconBadgeNumber:1];
+    [[UIApplication sharedApplication] scheduleLocalNotification:local];
+
     
     int days = ((int)time)/(3600*24);
     int hours = ((int)time)%(3600*24)/3600;
@@ -336,18 +338,5 @@
 }
 
 
-
-
-
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
