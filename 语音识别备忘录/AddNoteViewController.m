@@ -14,6 +14,7 @@
 #import "iflyMSC/IFlyRecognizerView.h"
 #import "PopupView.h"
 #import <UIKit/UIKit.h>
+#import "UIColor+Hash.h"
 
 @interface AddNoteViewController ()<UIAlertViewDelegate,UITextViewDelegate>
 {
@@ -41,6 +42,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    NSString *color = [[NSUserDefaults standardUserDefaults] objectForKey:@"color"];
+    self.navigationController.navigationBar.barTintColor = [UIColor colorFromHexString:color];
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     
     _mytextView.delegate = self;
     
@@ -104,8 +109,9 @@
     
     //推送通知
     UILocalNotification *local = [[UILocalNotification alloc]init];
-    local.fireDate = [NSDate dateWithTimeIntervalSinceNow:20];
+    local.fireDate = [NSDate dateWithTimeIntervalSinceNow:time];
     local.alertBody = self.mytextView.text;
+    local.soundName = @"";
     [local setApplicationIconBadgeNumber:1];
     [[UIApplication sharedApplication] scheduleLocalNotification:local];
 

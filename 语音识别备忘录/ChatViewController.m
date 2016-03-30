@@ -10,6 +10,7 @@
 #import "MessageModel.h"
 #import "MessageCell.h"
 #import "MessageFrameModel.h"
+#import "UIColor+Hash.h"
 @interface ChatViewController ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate>
 {
     NSString *_results;
@@ -26,7 +27,15 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    self.navigationController.navigationBar.barTintColor = [UIColor grayColor];
+    
+    
+    NSString *color = [[NSUserDefaults standardUserDefaults] objectForKey:@"color"];
+    
+    self.navigationController.navigationBar.barTintColor = [UIColor colorFromHexString:color];
+    // 禁用返回手势
+    if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+        self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+    }
     
     self.title = @"正在与机器人聊天...";
     self.tableView.delegate = self;
@@ -185,9 +194,6 @@
     [UIView animateWithDuration:keyDuration animations:^{
         
         self.view.transform = CGAffineTransformMakeTranslation(0, keyY - screenH);
-        
-        //self.tableView.transform = CGAffineTransformMakeTranslation(0, screenH - keyY);
-        
     }];
     
     
@@ -201,33 +207,7 @@
     [self.view endEditing:YES];
 }
 
-//- (NSMutableArray *)messages
-//{
-//    if (_messages == nil) {
-//
-//        NSArray * array = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"messages.plist" ofType:nil]];
-//
-//        NSMutableArray *messageArr = [NSMutableArray array];
-//        for (NSDictionary *dict in array) {
-//            MessageModel *messga = [MessageModel messageWithDict:dict];
-//
-//            //取出上一个模型
-//            MessageFrameModel *lastFm = [messageArr lastObject];
-//
-//            //隐藏时间
-//            messga.hideTime = [messga.time isEqualToString:lastFm.message.time];
-//
-//            MessageFrameModel *fm = [[MessageFrameModel alloc]init];
-//            fm.message = messga;
-//
-//            [messageArr addObject:fm];
-//        }
-//
-//        _messages = messageArr;
-//    }
-//
-//    return _messages;
-//}
+
 
 -(NSMutableArray *)messages {
     
@@ -237,13 +217,6 @@
     
     return _messages;
 }
-
-
-////隐藏状态栏
-//- (BOOL)prefersStatusBarHidden
-//{
-//    return YES;
-//}
 
 #pragma mark tableview数据源方法
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

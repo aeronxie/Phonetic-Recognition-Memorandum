@@ -13,8 +13,7 @@
 
 @interface DetailViewController : UIViewController
 @property (nonatomic, assign) NSInteger index;
-@property (nonatomic,strong) IFlyRecognizerView * iflyRecognizerView;
-
-@property (nonatomic,strong) PopupView          * popView;
+@property (nonatomic,strong) IFlyRecognizerView *iflyRecognizerView;
+@property (nonatomic,strong) PopupView* popView;
 
 @end

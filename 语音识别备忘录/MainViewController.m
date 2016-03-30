@@ -9,6 +9,7 @@
 #import "MainViewController.h"
 #import "AddNoteViewController.h"
 #import "DetailViewController.h"
+#import "UIColor+Hash.h"
 
 @interface MainViewController ()<UITableViewDataSource,UITableViewDelegate,UISearchDisplayDelegate,UISearchControllerDelegate>
 
@@ -18,6 +19,7 @@
 @property (nonatomic,strong)NSMutableArray *dateTemp;
 @property (nonatomic,strong)NSMutableArray *noteTemp;
 @property (nonatomic,strong)NSMutableArray *countDateTemp;
+@property (nonatomic,copy) NSString *color;
 @end
 
 @implementation MainViewController
@@ -42,12 +44,11 @@
     
     
     //取出保存的主题颜色
-    NSString *color = [[NSUserDefaults standardUserDefaults] objectForKey:@"color"];
+    self.color = [[NSUserDefaults standardUserDefaults] objectForKey:@"color"];
     
-    
-    [self.navigationController.navigationBar setBarTintColor:[self colorFromHexString:color]];
+    [self.navigationController.navigationBar setBarTintColor:[UIColor colorFromHexString:_color]];
 
-    [self.tabBarController.tabBar setBarTintColor:[self colorFromHexString:color]];
+    [self.tabBarController.tabBar setBarTintColor:[UIColor colorFromHexString:_color]];
     
     
     //取出保存的墙纸
@@ -68,6 +69,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
    
+    NSLog(@"%@",_color);
+    if (!self.color) {
+        [self.navigationController.navigationBar setBarTintColor:[UIColor colorFromHexString:@"#007fcc"]];
+        [self.tabBarController.tabBar setBarTintColor:[UIColor colorFromHexString:@"#007fcc"]];
+    }
     
     //初始化搜索框
     _bar = [[UISearchBar alloc]initWithFrame:CGRectMake(0, 0, self.tableView.bounds.size.width, 44)];
@@ -104,51 +110,6 @@
     
 }
 
-
-
-
-
-
-#pragma mark HASH颜色算法
-
--(UIColor *)colorFromHexString:(NSString *)hexString {
-    NSString *cString = [[hexString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] uppercaseString];
-    
-    // String should be 6 or 8 characters
-    if ([cString length] < 6) return [UIColor grayColor];
-    
-    // strip 0X if it appears
-    if ([cString hasPrefix:@"0X"]) cString = [cString substringFromIndex:2];
-    
-    if ([cString hasPrefix:@"#"]) cString = [cString substringFromIndex:1];
-    
-    if ([cString length] != 6) return [UIColor grayColor];
-    
-    // Separate into r, g, b substrings
-    NSRange range;
-    range.location = 0;
-    range.length = 2;
-    NSString *rString = [cString substringWithRange:range];
-    
-    range.location = 2;
-    NSString *gString = [cString substringWithRange:range];
-    
-    range.location = 4;
-    NSString *bString = [cString substringWithRange:range];
-    
-    // Scan values
-    unsigned int r, g, b;
-    [[NSScanner scannerWithString:rString] scanHexInt:&r];
-    [[NSScanner scannerWithString:gString] scanHexInt:&g];
-    [[NSScanner scannerWithString:bString] scanHexInt:&b];
-    
-    return [UIColor colorWithRed:((float) r / 255.0f)
-                           green:((float) g / 255.0f)
-                            blue:((float) b / 255.0f)
-                           alpha:1.0f];
-    
-    
-}
 
 
 - (void)didReceiveMemoryWarning {
@@ -233,14 +194,9 @@
     
 }
 
-
-
-
 //选中某一行
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    
-  
+
    DetailViewController *detail = [[DetailViewController alloc]initWithNibName:nil bundle:nil];
     
     NSInteger row = [indexPath row];

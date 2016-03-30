@@ -79,9 +79,7 @@
 
 //完成按钮~~
 - (IBAction)finished:(UIButton *)sender {
-    
-    
-    
+
     //获取用户选择的日期和时间
     NSDate *selected = [self.datePicker date];
     //创建一个日期格式器
@@ -94,11 +92,6 @@
     NSTimeZone *zone1 = [NSTimeZone systemTimeZone];
     NSInteger interval1 = [zone1 secondsFromGMTForDate:selected];
     NSDate *localTime1 = [selected dateByAddingTimeInterval:interval1];
-    
-    NSLog(@"%@",localTime1);
-    
-    
-    
     
     //获取当前系统的时间
     NSDate *now = [NSDate date];
@@ -128,7 +121,7 @@
     self.ViewCell.hidden = YES;
     self.finishBtn.hidden = YES;
     
-    _saveBtn.enabled = YES;
+    //_saveBtn.enabled = YES;
 
 }
 
@@ -161,7 +154,7 @@
     
     _saveBtn = saveBtn;
     
-    saveBtn.enabled = NO;
+    //saveBtn.enabled = NO;
 
     self.hidesBottomBarWhenPushed = YES;
 }
@@ -176,7 +169,7 @@
     NSArray *array = [[NSUserDefaults standardUserDefaults] objectForKey:@"note"];
     
     
-    NSString *oldtext = [array objectAtIndex:_index];
+    NSString *oldtext = [array objectAtIndex:self.index];
     
     self.mytextView.text = oldtext;
     
@@ -184,19 +177,14 @@
     NSArray *countDateArray = [[NSUserDefaults standardUserDefaults] objectForKey:@"countdate"];
     
     
-    NSDate *olddate = [countDateArray objectAtIndex:_index];
+    NSDate *olddate = [countDateArray objectAtIndex:self.index];
     
     //获取当前系统的时间
     NSDate *now = [NSDate date];
     NSTimeZone *zone = [NSTimeZone systemTimeZone];
     NSInteger interval = [zone secondsFromGMTForDate:now];
     NSDate *localTime = [now dateByAddingTimeInterval:interval];
-    
-    
-    NSLog(@"=========================%@",olddate);
-    
-    
-    
+
     //得到相差秒数
     NSTimeInterval time = [olddate timeIntervalSinceDate:localTime];
     
@@ -226,7 +214,7 @@
 #pragma mark 保存方法
 -(void)saveclicked {
     
-    NSMutableArray *mutableArray = [[NSUserDefaults standardUserDefaults] objectForKey:@"note"];
+    NSMutableArray *mutableArray = [[[NSUserDefaults standardUserDefaults] objectForKey:@"note"] mutableCopy];
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init ];
     
@@ -251,18 +239,14 @@
     
     
     
-    NSMutableArray *tempCountDateArray = [[NSUserDefaults standardUserDefaults] objectForKey:@"countdate"];
+    NSMutableArray *tempCountDateArray = [[[NSUserDefaults standardUserDefaults] objectForKey:@"countdate"] mutableCopy];
     
+    if (![self.mytextView.text isEqualToString:mutableArray[self.index]]) {
+        [tempCountDateArray replaceObjectAtIndex:self.index withObject:_selected];
+        [[NSUserDefaults standardUserDefaults] setObject:tempCountDateArray forKey:@"countdate"];
+    }
     
-    [tempCountDateArray replaceObjectAtIndex:self.index withObject:_selected];
-    
-    [[NSUserDefaults standardUserDefaults] setObject:tempCountDateArray forKey:@"countdate"];
-    
-    
-    NSLog(@"==================%@",tempCountDateArray);
-    
-    
-    NSMutableArray *mutableDateArray = [[NSUserDefaults standardUserDefaults] objectForKey:@"date"];
+    NSMutableArray *mutableDateArray = [[[NSUserDefaults standardUserDefaults] objectForKey:@"date"] mutableCopy];
     
     
     [mutableDateArray replaceObjectAtIndex:self.index withObject:datestring];
@@ -271,21 +255,13 @@
     [[NSUserDefaults standardUserDefaults] setObject:mutableDateArray forKey:@"date"];
     
   
-    
-    
     [self.mytextView resignFirstResponder];
     
     UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:@"保存成功" delegate:self cancelButtonTitle:@"好的" otherButtonTitles:nil, nil];
     
     [alert show];
-    
-    
-    
-    
-    
+
 }
-
-
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
 
