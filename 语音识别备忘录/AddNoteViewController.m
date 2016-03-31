@@ -75,6 +75,11 @@
     
 }
 
+// 取消
+- (IBAction)cancel:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 //完成按钮
 - (IBAction)finishedBtn:(id)sender {
     

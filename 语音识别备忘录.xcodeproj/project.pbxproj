@@ -124,7 +124,7 @@
 		65DDE1FD1B678122001F322A /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		65DDE1FE1B678122001F322A /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		65DDE2041B687C7B001F322A /* DetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
-		65F086EF1B65F552000CBB4D /* 语音备忘录.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "语音备忘录.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		65F086EF1B65F552000CBB4D /* 语音识别备忘录.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "语音识别备忘录.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		65F086F31B65F552000CBB4D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		65F086F41B65F552000CBB4D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		65F086F61B65F552000CBB4D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -375,7 +375,7 @@
 		65F086F01B65F552000CBB4D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				65F086EF1B65F552000CBB4D /* 语音备忘录.app */,
+				65F086EF1B65F552000CBB4D /* 语音识别备忘录.app */,
 				65F087081B65F552000CBB4D /* 语音识别备忘录Tests.xctest */,
 			);
 			name = Products;
@@ -468,7 +468,7 @@
 			);
 			name = "语音识别备忘录";
 			productName = "语音识别备忘录";
-			productReference = 65F086EF1B65F552000CBB4D /* 语音备忘录.app */;
+			productReference = 65F086EF1B65F552000CBB4D /* 语音识别备忘录.app */;
 			productType = "com.apple.product-type.application";
 		};
 		65F087071B65F552000CBB4D /* 语音识别备忘录Tests */ = {
@@ -716,7 +716,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.312.------";
-				PRODUCT_NAME = "语音备忘录";
+				PRODUCT_NAME = "语音识别备忘录";
 			};
 			name = Debug;
 		};
@@ -734,7 +734,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.312.------";
-				PRODUCT_NAME = "语音备忘录";
+				PRODUCT_NAME = "语音识别备忘录";
 			};
 			name = Release;
 		};

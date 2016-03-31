@@ -148,18 +148,19 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     UIBarButtonItem *saveBtn = [[UIBarButtonItem alloc]initWithTitle:@"保存" style:UIBarButtonItemStylePlain target:self action:@selector(saveclicked)];
+    UIBarButtonItem *cancelBtn = [[UIBarButtonItem alloc]initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(cancelClicked)];
     
-    
+    self.navigationItem.leftBarButtonItem = cancelBtn;
     self.navigationItem.rightBarButtonItem = saveBtn;
-    
     _saveBtn = saveBtn;
     
-    //saveBtn.enabled = NO;
-
     self.hidesBottomBarWhenPushed = YES;
 }
 
-
+-(void)cancelClicked {
+    
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];

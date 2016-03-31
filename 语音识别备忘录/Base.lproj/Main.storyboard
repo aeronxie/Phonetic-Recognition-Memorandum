@@ -453,6 +453,11 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="备忘录" id="mY6-nT-GUk">
+                        <barButtonItem key="leftBarButtonItem" title="取消" id="ygv-UA-YKO">
+                            <connections>
+                                <action selector="cancel:" destination="cmO-c2-6hh" id="NNn-YG-2iN"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="完成" id="ihW-VB-1z0">
                             <connections>
                                 <action selector="savaBtn:" destination="cmO-c2-6hh" id="Rpz-Aa-JoG"/>
