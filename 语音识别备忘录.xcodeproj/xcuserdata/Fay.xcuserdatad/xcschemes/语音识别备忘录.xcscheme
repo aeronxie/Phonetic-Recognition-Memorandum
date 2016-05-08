@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "65F086EE1B65F552000CBB4D"
-               BuildableName = "&#x8bed;&#x97f3;&#x5907;&#x5fd8;&#x5f55;.app"
+               BuildableName = "&#x8bed;&#x97f3;&#x8bc6;&#x522b;&#x5907;&#x5fd8;&#x5f55;.app"
                BlueprintName = "&#x8bed;&#x97f3;&#x8bc6;&#x522b;&#x5907;&#x5fd8;&#x5f55;"
                ReferencedContainer = "container:&#x8bed;&#x97f3;&#x8bc6;&#x522b;&#x5907;&#x5fd8;&#x5f55;.xcodeproj">
             </BuildableReference>
@@ -57,7 +57,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "65F086EE1B65F552000CBB4D"
-            BuildableName = "&#x8bed;&#x97f3;&#x5907;&#x5fd8;&#x5f55;.app"
+            BuildableName = "&#x8bed;&#x97f3;&#x8bc6;&#x522b;&#x5907;&#x5fd8;&#x5f55;.app"
             BlueprintName = "&#x8bed;&#x97f3;&#x8bc6;&#x522b;&#x5907;&#x5fd8;&#x5f55;"
             ReferencedContainer = "container:&#x8bed;&#x97f3;&#x8bc6;&#x522b;&#x5907;&#x5fd8;&#x5f55;.xcodeproj">
          </BuildableReference>
@@ -81,7 +81,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "65F086EE1B65F552000CBB4D"
-            BuildableName = "&#x8bed;&#x97f3;&#x5907;&#x5fd8;&#x5f55;.app"
+            BuildableName = "&#x8bed;&#x97f3;&#x8bc6;&#x522b;&#x5907;&#x5fd8;&#x5f55;.app"
             BlueprintName = "&#x8bed;&#x97f3;&#x8bc6;&#x522b;&#x5907;&#x5fd8;&#x5f55;"
             ReferencedContainer = "container:&#x8bed;&#x97f3;&#x8bc6;&#x522b;&#x5907;&#x5fd8;&#x5f55;.xcodeproj">
          </BuildableReference>
@@ -100,7 +100,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "65F086EE1B65F552000CBB4D"
-            BuildableName = "&#x8bed;&#x97f3;&#x5907;&#x5fd8;&#x5f55;.app"
+            BuildableName = "&#x8bed;&#x97f3;&#x8bc6;&#x522b;&#x5907;&#x5fd8;&#x5f55;.app"
             BlueprintName = "&#x8bed;&#x97f3;&#x8bc6;&#x522b;&#x5907;&#x5fd8;&#x5f55;"
             ReferencedContainer = "container:&#x8bed;&#x97f3;&#x8bc6;&#x522b;&#x5907;&#x5fd8;&#x5f55;.xcodeproj">
          </BuildableReference>
