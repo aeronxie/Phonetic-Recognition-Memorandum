@@ -44,7 +44,7 @@
     self.title = @"个人信息";
     self.number.text = @"SilverFoxx";
     self.name.text = @"小飞侠";
-    self.email.text = @"279698034@qq.com";
+    self.email.text = @"111111111@qq.com";
     self.place.text = @"中国吉林长春";
     self.sex.text = @"男";
     self.birthday.text = @"2015年1月15日";
